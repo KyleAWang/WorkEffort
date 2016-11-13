@@ -43,22 +43,21 @@ mongoose.connect(function (db) {
 
 function init(app) {
     var port = normalizePort(process.env.PORT || '3000');
-    app.set('port', port);
+    // app.set('port', port);
 
     /**
      * Create HTTP server.
      */
 
-    var server = http.createServer(app);
+    // var server = http.createServer(app);
 
     /**
      * Listen on provided port, on all network interfaces.
      */
 
     logger.info('port'+port);
-    logger.info('addr:' + server.address());
 
-    server.listen(config.port, config.host, function () {
+    app.listen(config.port, config.host, function () {
         // Create server URL
         var server = (process.env.NODE_ENV === 'secure' ? 'https://' : 'http://') + config.host + ':' + config.port;
         // Logging initialization
@@ -74,7 +73,7 @@ function init(app) {
         console.log('--');
 
     });
-    server.on('error', onError);
+    app.on('error', onError);
     // server.on('listening',
     //     function () {
     //         var addr = server.address();

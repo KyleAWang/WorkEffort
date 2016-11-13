@@ -215,6 +215,7 @@ module.exports.initErrorRoutes = function (app) {
  */
 module.exports.configureSocketIO = function (app, db) {
   // Load the Socket.io configuration
+
   var server = require('./socket.io')(app, db);
 
   // Return server object
@@ -259,7 +260,7 @@ module.exports.init = function (db) {
   this.initErrorRoutes(app);
 
   // Configure Socket.io
-  // app = this.configureSocketIO(app, db);
+  app = this.configureSocketIO(app, db);
 
   return app;
 };
